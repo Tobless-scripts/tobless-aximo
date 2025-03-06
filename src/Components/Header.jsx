@@ -6,6 +6,21 @@ function Header() {
     const menuToggleRef = useRef(null);
     const navLinksRef = useRef(null);
     const [isOpen, setIsOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.screenY >= 30) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    });
 
     useEffect(() => {
         const menuToggle = menuToggleRef.current;
@@ -26,13 +41,19 @@ function Header() {
 
     return (
         <div className="m-0 overflow-hidden">
-            <nav className="flex py-6 px-25 justify-between bg-black text-[#fdfde1] text-base max-md:py-3 max-md:px-12.25">
+            <nav
+                className={`flex py-6 px-25 justify-between bg-black text-[#fdfde1] text-base max-md:py-3 max-md:px-8 ${
+                    isScrolled
+                        ? "fixed top-0 left-0 w-full bg-black shadow-sm transition-all duration-300 z-50"
+                        : ""
+                }`}
+            >
                 <div className="p-2">
                     <img src={logo} alt="logo" />
                 </div>
                 <div
                     id="menu-toggle"
-                    className="flex flex-col gap-1 cursor-pointer p-2 max-md:flex"
+                    className="none flex-col gap-1 cursor-pointer p-2 max-md:flex"
                     onClick={() => setIsOpen(!isOpen)}
                 >
                     <span
@@ -58,11 +79,11 @@ function Header() {
                 <ul
                     ref={navLinksRef}
                     id="nav-links"
-                    className={`list-none flex gap-5 max-md:absolute max-md:top-[64px] max-md:translate-x-[-100%] max-md:transform max-md:w-[50%] max-md:gap-0 max-md:flex-col max-md:bg-white max-md:text-black max-md:text-left max-md:py-0 max-md:transition-all max-md:duration-500 max-md:ease-in-out max-md:bg-black max-md:h-[90%] max-md:shadow-sm max-md:shadow-black ${
+                    className={`list-none flex gap-5 max-md:absolute max-md:top-[64px] max-md:translate-x-[-100%] max-md:transform max-md:w-[70%] max-md:gap-0 max-md:flex-col max-md:bg-white max-md:text-black max-md:text-left max-md:py-0 max-md:transition-all max-md:duration-500 max-md:ease-in-out max-md:bg-black max-md:h-[90%] max-md:shadow-sm max-md:shadow-black ${
                         isOpen ? "max-md:right-0" : "max-md:right-[100%]"
                     }`}
                 >
-                    <li className="p-2 font-inter max-md:py-3 max-md:border-t-2 max-md:border-t-[#e5e5e5]  ">
+                    <li className="p-2 font-inter max-md:py-3 max-md:px-4 max-md:border-t-2 max-md:border-t-[#e5e5e5]  ">
                         <a
                             href="#"
                             className="text-lg transition duration-300 hover:text-[rgb(191,247,71)] font-semibold leading-[30px]"
@@ -70,7 +91,7 @@ function Header() {
                             Home
                         </a>
                     </li>
-                    <li className="p-2 font-inter max-md:py-3 max-md:border-t-2 max-md:border-t-[#e5e5e5] ">
+                    <li className="p-2 font-inter max-md:py-3 max-md:px-4 max-md:border-t-2 max-md:border-t-[#e5e5e5] ">
                         <a
                             href="#"
                             className="text-lg transition duration-300 hover:text-[rgb(191,247,71)] font-semibold leading-[30px]"
@@ -78,7 +99,7 @@ function Header() {
                             About Us
                         </a>
                     </li>
-                    <li className="p-2 font-inter max-md:py-3 max-md:border-t-2 max-md:border-t-[#e5e5e5] ">
+                    <li className="p-2 font-inter max-md:py-3 max-md:px-4 max-md:border-t-2 max-md:border-t-[#e5e5e5] ">
                         <a
                             href="#"
                             className="text-lg transition duration-300 hover:text-[rgb(191,247,71)] font-semibold leading-[30px]"
@@ -86,7 +107,7 @@ function Header() {
                             Blog
                         </a>
                     </li>
-                    <li className="p-2 font-inter max-md:py-3 max-md:border-t-2 max-md:border-t-[#e5e5e5] ">
+                    <li className="p-2 font-inter max-md:py-3 max-md:px-4 max-md:border-t-2 max-md:border-t-[#e5e5e5] ">
                         <a
                             href="#"
                             className="text-lg transition duration-300 hover:text-[rgb(191,247,71)] font-semibold leading-[30px]"
