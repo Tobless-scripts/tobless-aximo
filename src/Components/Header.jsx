@@ -10,7 +10,7 @@ function Header() {
 
     useEffect(() => {
         const handleScroll = () => {
-            if (window.screenY >= 30) {
+            if (window.scrollY >= 3) {
                 setIsScrolled(true);
             } else {
                 setIsScrolled(false);
@@ -51,6 +51,7 @@ function Header() {
                 <div className="p-2">
                     <img src={logo} alt="logo" />
                 </div>
+
                 <div
                     id="menu-toggle"
                     className="none flex-col gap-1 cursor-pointer p-2 max-md:flex"
@@ -76,14 +77,15 @@ function Header() {
                         }`}
                     ></span>
                 </div>
+
                 <ul
                     ref={navLinksRef}
                     id="nav-links"
-                    className={`list-none flex gap-5 max-md:absolute max-md:top-[64px] max-md:translate-x-[-100%] max-md:transform max-md:w-[70%] max-md:gap-0 max-md:flex-col max-md:bg-white max-md:text-black max-md:text-left max-md:py-0 max-md:transition-all max-md:duration-500 max-md:ease-in-out max-md:bg-black max-md:h-[90%] max-md:shadow-sm max-md:shadow-black ${
+                    className={`list-none flex gap-5 max-md:fixed max-md:top-[64px] max-md:translate-x-[-100%] max-md:transform max-md:w-[70%] max-md:gap-0 max-md:flex-col max-md:bg-white max-md:text-black max-md:text-left max-md:py-0 max-md:transition-all max-md:duration-500 max-md:ease-in-out max-md:bg-black max-md:h-[90%] max-md:shadow-sm z-[9999] max-md:shadow-black ${
                         isOpen ? "max-md:right-[-40%]" : "max-md:right-[100%]"
                     }`}
                 >
-                    <li className="p-2 font-inter max-md:py-3 max-md:px-4 max-md:border-t-2 max-md:border-t-[#e5e5e5]  ">
+                    <li className="p-2 font-inter max-md:py-3 max-md:px-4 max-md:border-t-2 max-md:border-t-[#e5e5e5] max-md:text-black">
                         <a
                             href="#"
                             className="text-lg transition duration-300 hover:text-[rgb(191,247,71)] font-semibold leading-[30px]"
@@ -91,7 +93,7 @@ function Header() {
                             Home
                         </a>
                     </li>
-                    <li className="p-2 font-inter max-md:py-3 max-md:px-4 max-md:border-t-2 max-md:border-t-[#e5e5e5] ">
+                    <li className="p-2 font-inter max-md:py-3 max-md:px-4 max-md:border-t-2 max-md:border-t-[#e5e5e5] max-md:text-black">
                         <a
                             href="#"
                             className="text-lg transition duration-300 hover:text-[rgb(191,247,71)] font-semibold leading-[30px]"
@@ -99,7 +101,7 @@ function Header() {
                             About Us
                         </a>
                     </li>
-                    <li className="p-2 font-inter max-md:py-3 max-md:px-4 max-md:border-t-2 max-md:border-t-[#e5e5e5] ">
+                    <li className="p-2 font-inter max-md:py-3 max-md:px-4 max-md:border-t-2 max-md:border-t-[#e5e5e5] max-md:text-black">
                         <a
                             href="#"
                             className="text-lg transition duration-300 hover:text-[rgb(191,247,71)] font-semibold leading-[30px]"
@@ -107,7 +109,7 @@ function Header() {
                             Blog
                         </a>
                     </li>
-                    <li className="p-2 font-inter max-md:py-3 max-md:px-4 max-md:border-t-2 max-md:border-t-[#e5e5e5] ">
+                    <li className="p-2 font-inter max-md:py-3 max-md:px-4 max-md:border-t-2 max-md:border-t-[#e5e5e5] max-md:text-black">
                         <a
                             href="#"
                             className="text-lg transition duration-300 hover:text-[rgb(191,247,71)] font-semibold leading-[30px]"
@@ -116,7 +118,7 @@ function Header() {
                         </a>
                     </li>
                 </ul>
-                <div className="block max-md:hidden">
+                <div className="block max-lg:hidden">
                     <button className="py-2.5 px-4.5 border-2 font-bold text-base border-black rounded-full font-inter text-lg transition duration-500 bg-[rgb(191,247,71)] text-black cursor-pointer shadow-white shadow-md hover:shadow-none">
                         Contact Us
                     </button>
