@@ -11,6 +11,8 @@ import course2 from "../assets/Graphics.png";
 import course3 from "../assets/web.png";
 import course4 from "../assets/motion.png";
 import next from "../assets/next.svg";
+import thumbnail from "../assets/video-thumbnail.png";
+import play from "../assets/play button.svg";
 
 function Home() {
     return (
@@ -18,6 +20,7 @@ function Home() {
             <Header />
             <HeroSection />
             <Provide />
+            <Outstanding />
         </>
     );
 }
@@ -187,6 +190,69 @@ function Provide() {
                             help sell a product or service.
                         </p>
                         <img src={next} alt="next" className="my-2" />
+                    </div>
+                </div>
+            </div>
+        </>
+    );
+}
+
+function Outstanding() {
+    return (
+        <>
+            <div className="p-25 max-md:py-3 max-md:px-2 mt-25">
+                <div className="grid grid-cols-2 gap-8 items-center max-md:grid-cols-1 max-md:text-center">
+                    <div>
+                        <h1 className="font-bold leading-[4.6875rem] text-[4rem] max-md:font-[600] max-md:leading-[2.4375rem] max-md:text-[2.25rem] ">
+                            We make your business stand out
+                        </h1>
+                    </div>
+                    <div className="pl-48 max-md:pl-0">
+                        <p className="font-[rgb(12, 12, 12)] leading-[1.875rem] text-[1.3125rem] font-[400] ">
+                            We work closely with our clients to know their
+                            objectives, target audience, unique needs, and
+                            practical design solutions.
+                        </p>
+                    </div>
+                </div>
+                <div className="grid grid-cols-5 gap-12 mt-20 max-md:grid-cols-1 items-center">
+                    <div className="col-span-3 relative border-8 border-black rounded-xl">
+                        <img
+                            src={thumbnail}
+                            alt="thumbnail"
+                            className="w-full h-full"
+                        />
+
+                        <div className="absolute top-[50%] left-[40%] cursor-pointer shadow-white shadow-md hover:shadow-none rounded-full duration-300 ease-in-out ">
+                            <img src={play} alt="play" />
+                        </div>
+                    </div>
+
+                    <div className="col-span-2 bg-black rounded-xl text-white text-center px-8 max-md:col-span-3">
+                        <div className="py-2">
+                            <h1 className="text-lime-300 font-bold text-[4.375rem] ">
+                                15+
+                            </h1>
+                            <p className="font-semi-bold leading-[1.875rem] text-[1.125rem] ">
+                                Years of experience
+                            </p>
+                        </div>
+                        <div className="py-2 border-t-1 border-white">
+                            <h1 className="text-lime-300 font-bold text-[4.375rem] ">
+                                120k
+                            </h1>
+                            <p className="font-semi-bold leading-[1.875rem] text-[1.125rem] ">
+                                Successful Projects
+                            </p>
+                        </div>
+                        <div className="py-2 border-t-1 border-white">
+                            <h1 className="text-lime-300 font-bold text-[4.375rem] ">
+                                100%
+                            </h1>
+                            <p className="font-semi-bold leading-[1.875rem] text-[1.125rem] ">
+                                Client satisfaction rate
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
