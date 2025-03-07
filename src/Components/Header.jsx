@@ -81,7 +81,7 @@ function Header() {
                 <ul
                     ref={navLinksRef}
                     id="nav-links"
-                    className={`list-none flex gap-5 max-md:fixed max-md:top-[64px] max-md:translate-x-[-100%] max-md:transform max-md:w-[70%] max-md:gap-0 max-md:flex-col max-md:bg-white max-md:text-black max-md:text-left max-md:py-0 max-md:transition-all max-md:duration-500 max-md:ease-in-out max-md:bg-black max-md:h-[90%] max-md:shadow-sm z-[9999] max-md:shadow-black ${
+                    className={`list-none flex gap-5 max-md:fixed max-md:top-[64px] max-md:translate-x-[-100%] max-md:transform max-md:w-[70%] max-md:gap-0 max-md:flex-col max-md:bg-white max-md:text-black max-md:text-left max-md:py-0 max-md:transition-all max-md:duration-500 max-md:ease-in-out max-md:bg-black max-md:h-[91%] max-md:shadow-sm z-[9999] max-md:shadow-black ${
                         isOpen ? "max-md:right-[-40%]" : "max-md:right-[100%]"
                     }`}
                 >
