@@ -13,6 +13,7 @@ import course4 from "../assets/motion.png";
 import next from "../assets/next.svg";
 import thumbnail from "../assets/video-thumbnail.png";
 import play from "../assets/play button.svg";
+import { useState } from "react";
 
 function Home() {
     return (
@@ -21,6 +22,8 @@ function Home() {
             <HeroSection />
             <Provide />
             <Outstanding />
+            <Projects />
+            <Quality />
         </>
     );
 }
@@ -253,6 +256,112 @@ function Outstanding() {
                                 Client satisfaction rate
                             </p>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    );
+}
+
+function Projects() {
+    return (
+        <>
+            <div className="p-25 bg-black max-md:py-3 max-md:px-2 ">
+                <div className="text-center px-12 pt-12 max-md:px-0">
+                    <h1 className="leading-[4.6875rem] text-[4.375rem] font-bold max-md:font-[600] max-md:leading-[2.4375rem] max-md:text-[2.25rem] text-white ">
+                        Have a wide range of creative projects
+                    </h1>
+                </div>
+            </div>
+        </>
+    );
+}
+
+function Quality() {
+    const [openSection, setOpenSection] = useState(null);
+
+    const toggleSection = (section) => {
+        setOpenSection(openSection === section ? null : section);
+    };
+    return (
+        <>
+            <div className="grid grid-cols-2 p-25 gap-8 max-md:grid-cols-1 max-md:py-3 max-md:px-2 max-md:text-center">
+                <div>
+                    <h1 className="leading-[4.5rem] text-[3.9rem] font-bold max-md:font-[600] max-md:leading-[2.4375rem] max-md:text-[2.25rem] text-black py-4">
+                        Our high-quality working processes
+                    </h1>
+                    <p className="font-[rgb(12, 12, 12)] leading-[1.875rem] text-[1.2rem] font-[400] py-4">
+                        We focus at every stage on effective communication and
+                        collaboration between the client and ensuring that the
+                        final design meets the client's objectives and
+                        expectations.
+                    </p>
+                    <p className="font-[rgb(12, 12, 12)] leading-[1.875rem] text-[1.2rem] font-[400] ">
+                        It is important to note that these are simplified steps,
+                        and the actual work process may vary depending on the
+                        complexity of the project.
+                    </p>
+                </div>
+                <div className="p-5 space-y-3 justify-center flex flex-col items-center max-md:text-left">
+                    {/* Project Idea */}
+                    <div
+                        className={`px-8 py-6 border-2 rounded-lg cursor-pointer transition-all duration-500 ease-in-out w-[80%] max-md:w-[100%]  ${
+                            openSection === "idea"
+                                ? "bg-lime-300 shadow-lg shadow-black"
+                                : "bg-white shadow-none"
+                        }`}
+                        onClick={() => toggleSection("idea")}
+                    >
+                        <h1 className="font-bold leading-[2.625rem] text-[1.875rem] ">
+                            01/ Project Idea
+                        </h1>
+                        {openSection === "idea" && (
+                            <p className="mt-2 font-normal text-[rgb(33, 37, 41)] text-[1.125rem] leading-[1.875rem] ">
+                                The process starts with a detailed discussion
+                                with the client to understand their idea and
+                                goals
+                            </p>
+                        )}
+                    </div>
+
+                    {/* Brainstorming */}
+                    <div
+                        className={`p-5 border-2 rounded-lg cursor-pointer transition-all duration-500 ease-in-out w-[80%] max-md:w-[100%] ${
+                            openSection === "brainstorming"
+                                ? "bg-lime-300 shadow-lg shadow-black"
+                                : "bg-white shadow-none"
+                        }`}
+                        onClick={() => toggleSection("brainstorming")}
+                    >
+                        <h1 className="font-bold leading-[2.625rem] text-[1.875rem] ">
+                            02/ Brainstorming
+                        </h1>
+                        {openSection === "brainstorming" && (
+                            <p className="mt-2 font-normal text-[rgb(33, 37, 41)] text-[1.125rem] leading-[1.875rem] ">
+                                Brainstorming is a group creativity technique in
+                                which members attempt to find a solution
+                            </p>
+                        )}
+                    </div>
+
+                    {/* Launch */}
+                    <div
+                        className={`p-5 border-2 rounded-lg cursor-pointer transition-all duration-500 ease-in-out w-[80%] max-md:w-[100%] ${
+                            openSection === "launch"
+                                ? "bg-lime-300 shadow-lg shadow-black"
+                                : "bg-white shadow-none"
+                        }`}
+                        onClick={() => toggleSection("launch")}
+                    >
+                        <h1 className="font-bold leading-[2.625rem] text-[1.875rem] ">
+                            03/ Launch
+                        </h1>
+                        {openSection === "launch" && (
+                            <p className="mt-2 font-normal text-[rgb(33, 37, 41)] text-[1.125rem] leading-[1.875rem] ">
+                                The completed design assets or final product are
+                                delivered with necessary documentation.
+                            </p>
+                        )}
                     </div>
                 </div>
             </div>
