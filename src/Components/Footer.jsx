@@ -1,10 +1,30 @@
 import "../index.css";
 import send from "../assets/send.png";
 import logo from "../../public/logo.svg";
+import arrow from "../assets/close.png";
 
 function Footer() {
+    window.onscroll = function () {
+        const scrollToTop = document.getElementById("scrollToTop");
+        if (
+            document.body.scrollTop > 30 ||
+            document.documentElement.scrollTop > 500
+        ) {
+            scrollToTop.style.display = "block";
+        } else {
+            scrollToTop.style.display = "none";
+        }
+    };
+
+    let scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    };
+
     return (
-        <>
+        <div className="relative">
             <div className="max-lg:pt-8 max-lg:px-2 max-md:py-16 px-25 pt-25 pb-5 bg-black text-[#fdfde1] flex flex-col gap-8 max-lg:pb-2">
                 <div className="grid grid-cols-2 gap-12  max-lg:grid-cols-1 border-b-[0.00000001rem] border-[#fdfde1] pb-28 ">
                     <div className="p-2 flex flex-col gap-6 max-lg:px-8">
@@ -100,7 +120,16 @@ function Footer() {
                     </div>
                 </div>
             </div>
-        </>
+            <div className="fixed bottom-[5%] right-[2%] w-10 z-50 bg-lime-300 rounded-md shadow-black shadow-md cursor-pointer ">
+                <img
+                    src={arrow}
+                    alt="arrowCircle"
+                    onClick={scrollToTop}
+                    id="scrollToTop"
+                    className="w-full"
+                ></img>
+            </div>
+        </div>
     );
 }
 
