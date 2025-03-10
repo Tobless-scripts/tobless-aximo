@@ -6,4 +6,27 @@ body {
 h1 {
     font-family: "syne", sans-serif;
 }
+
+@keyframes scrollHorizontal {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.scroll-text {
+    display: flex;
+    white-space: nowrap;
+    animation: scrollHorizontal 20s linear infinite;
+}
+
+.scroll-container {
+    position: relative;
+    overflow: hidden;
+    background-color: black;
+    color: limegreen;
+}
+
 @import "tailwindcss";
