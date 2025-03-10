@@ -5,7 +5,7 @@ import logo from "../../public/logo.svg";
 function Footer() {
     return (
         <>
-            <div className="max-lg:py-8 max-lg:px-2 max-md:py-16 px-25 pt-25 pb-5 bg-black text-[#fdfde1] flex flex-col gap-8">
+            <div className="max-lg:pt-8 max-lg:px-2 max-md:py-16 px-25 pt-25 pb-5 bg-black text-[#fdfde1] flex flex-col gap-8 max-lg:pb-2">
                 <div className="grid grid-cols-2 gap-12  max-lg:grid-cols-1 border-b-[0.00000001rem] border-[#fdfde1] pb-28 ">
                     <div className="p-2 flex flex-col gap-6 max-lg:px-8">
                         <h1 className="leading-[4.6875rem] text-[4.375rem] font-bold max-md:font-[600] max-md:leading-[2.4375rem] max-md:text-[2.25rem]  ">
@@ -75,7 +75,7 @@ function Footer() {
 
                             <div className="inline-flex w-[90%] items-center text-center justify-between py-2.5 pl-12 pr-4 border-2 font-bold text-base border-black rounded-full font-inter transition duration-500 bg-lime-300 text-black cursor-pointer shadow-white shadow-md hover:shadow-none max-sm:w-full max-sm:pl-6 max-sm:pr-2">
                                 <div>
-                                    <p>Book a free consultation</p>
+                                    <p>Send message</p>
                                 </div>
                                 <div className="w-12 bg-black p-2 rounded-full h-12 ">
                                     <img
@@ -88,11 +88,16 @@ function Footer() {
                         </form>
                     </div>
                 </div>
-                <div className="flex space-between w-[full]">
-                    <img src={logo} alt="logo" />
-                    <h2>
-                        &copy; Copyright 2024, All Rights Reserved by Mthemeus
-                    </h2>
+                <div className="flex justify-between items-center w-full max-lg:justify-center max-lg:flex-col max-lg:text-center gap-8">
+                    <div>
+                        <img src={logo} alt="logo" />
+                    </div>
+                    <div>
+                        <h2 className="text-[#999] font-normal text-[1.125rem] leading-[1.875rem] ">
+                            &copy; Copyright 2024, All Rights Reserved by
+                            Mthemeus
+                        </h2>
+                    </div>
                 </div>
             </div>
         </>
