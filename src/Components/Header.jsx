@@ -1,60 +1,43 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import logo from "../../public/logo.svg";
 import "../index.css";
 
 function Header() {
-    const menuToggleRef = useRef(null);
-    const navLinksRef = useRef(null);
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY >= 1) {
-                setIsScrolled(true);
-            } else {
-                setIsScrolled(false);
-            }
+            setIsScrolled(window.scrollY > 1);
         };
+
         window.addEventListener("scroll", handleScroll);
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-    });
-
-    useEffect(() => {
-        const menuToggle = menuToggleRef.current;
-        const navLinks = navLinksRef.current;
-
-        if (menuToggle && navLinks) {
-            const handleMenuToggle = () => {
-                setIsOpen((prev) => !prev);
-            };
-
-            menuToggle.addEventListener("click", handleMenuToggle);
-
-            return () => {
-                menuToggle.removeEventListener("click", handleMenuToggle);
-            };
-        }
+        return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    useEffect(() => {
+        document.body.style.paddingTop = isOpen ? "17rem" : "0";
+    }, [isOpen]);
+
     return (
-        <div className="m-0 overflow-hidden">
+        <div className="m-0 overflow-hidden relative">
             <nav
-                className={`flex py-6 px-25 justify-between bg-black text-[#fdfde1] text-base max-md:py-3 max-md:px-6 ${
-                    isScrolled
-                        ? "fixed top-0 left-0 w-full bg-black shadow-sm transition-all duration-300 z-50"
-                        : ""
-                }`}
+                className={`flex py-6 px-25 justify-between bg-black text-[#fdfde1] text-base max-md:py-3 max-md:px-0 overflow-y-hidden transition-all duration-300 ease-in-out
+        ${
+            isScrolled || isOpen
+                ? "fixed top-0 left-0 w-full bg-black shadow-sm transition-all duration-300 z-[100]"
+                : ""
+        }  
+        ${isOpen ? "max-md:h-[17rem]" : "max-md:h-[4rem]"}`}
             >
-                <div className="p-2">
+                <div className="p-2 max-md:ml-2">
                     <img src={logo} alt="logo" />
                 </div>
 
+                {/* Menu Toggle Button */}
                 <div
                     id="menu-toggle"
-                    className="none flex-col gap-1 cursor-pointer p-2 max-md:flex"
+                    className="none flex-col gap-1 cursor-pointer p-2 max-md:flex max-md:mr-2"
                     onClick={() => setIsOpen(!isOpen)}
                 >
                     <span
@@ -79,45 +62,21 @@ function Header() {
                 </div>
 
                 <ul
-                    ref={navLinksRef}
                     id="nav-links"
-                    className={`list-none flex gap-5 max-md:fixed max-md:top-[64px] max-md:translate-x-[-100%] max-md:transform max-md:w-[70%] max-md:gap-0 max-md:flex-col max-md:bg-white max-md:text-black max-md:text-left max-md:py-0 max-md:transition-all max-md:duration-500 max-md:ease-in-out max-md:bg-black max-md:h-[91%] max-md:shadow-sm z-[9999] max-md:shadow-black ${
-                        isOpen ? "max-md:right-[-40%]" : "max-md:right-[100%]"
-                    }`}
+                    className="list-none flex gap-5 absolute max-md:top-[64px] max-md:w-full transition-all duration-300 ease-in-out text-white max-md:gap-0 max-md:flex-col max-md:transition-opacity max-md:bg-black max-md:h-full max-md:text-white max-md:pl-4 max-md:text-left max-md:py-0"
                 >
-                    <li className="p-2 font-inter max-md:py-3 max-md:px-4 max-md:border-t-2 max-md:border-t-[#e5e5e5] max-md:text-black">
-                        <a
-                            href="#"
-                            className="text-lg transition duration-300 hover:text-[rgb(191,247,71)] font-semibold leading-[30px]"
-                        >
-                            Home
-                        </a>
-                    </li>
-                    <li className="p-2 font-inter max-md:py-3 max-md:px-4 max-md:border-t-2 max-md:border-t-[#e5e5e5] max-md:text-black">
-                        <a
-                            href="#"
-                            className="text-lg transition duration-300 hover:text-[rgb(191,247,71)] font-semibold leading-[30px]"
-                        >
-                            About Us
-                        </a>
-                    </li>
-                    <li className="p-2 font-inter max-md:py-3 max-md:px-4 max-md:border-t-2 max-md:border-t-[#e5e5e5] max-md:text-black">
-                        <a
-                            href="#"
-                            className="text-lg transition duration-300 hover:text-[rgb(191,247,71)] font-semibold leading-[30px]"
-                        >
-                            Blog
-                        </a>
-                    </li>
-                    <li className="p-2 font-inter max-md:py-3 max-md:px-4 max-md:border-t-2 max-md:border-t-[#e5e5e5] max-md:text-black">
-                        <a
-                            href="#"
-                            className="text-lg transition duration-300 hover:text-[rgb(191,247,71)] font-semibold leading-[30px]"
-                        >
-                            Contact
-                        </a>
-                    </li>
+                    {["Home", "About Us", "Blog", "Contact"].map((item) => (
+                        <li key={item} className="p-3">
+                            <a
+                                href="#"
+                                className="text-lg text-white transition duration-300 hover:text-[rgb(191,247,71)] font-semibold"
+                            >
+                                {item}
+                            </a>
+                        </li>
+                    ))}
                 </ul>
+
                 <div className="block max-lg:hidden">
                     <button className="py-2.5 px-4.5 border-2 font-bold text-base border-black rounded-full font-inter text-lg transition duration-500 bg-[rgb(191,247,71)] text-black cursor-pointer shadow-white shadow-md hover:shadow-none">
                         Contact Us
