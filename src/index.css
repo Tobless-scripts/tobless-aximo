@@ -16,6 +16,11 @@ h1 {
     }
 }
 
+.navbar-open {
+    padding-top: 17rem;
+    transition: padding-top 0.3s ease-in-out;
+}
+
 .scroll-text {
     display: flex;
     white-space: nowrap;

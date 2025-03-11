@@ -16,7 +16,11 @@ function Header() {
     }, []);
 
     useEffect(() => {
-        document.body.style.paddingTop = isOpen ? "17rem" : "0";
+        if (isOpen) {
+            document.body.classList.add("navbar-open");
+        } else {
+            document.body.classList.remove("navbar-open");
+        }
     }, [isOpen]);
 
     return (
