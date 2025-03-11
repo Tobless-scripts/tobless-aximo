@@ -63,7 +63,7 @@ function Header() {
 
                 <ul
                     id="nav-links"
-                    className="list-none flex gap-5 absolute max-md:top-[64px] max-md:w-full transition-all duration-300 ease-in-out text-white max-md:gap-0 max-md:flex-col max-md:transition-opacity max-md:bg-black max-md:h-full max-md:text-white max-md:pl-4 max-md:text-left max-md:py-0"
+                    className="list-none flex gap-5 max-md:absolute max-md:top-[64px] max-md:w-full transition-all duration-300 ease-in-out text-white max-md:gap-0 max-md:flex-col max-md:transition-opacity max-md:bg-black max-md:h-full max-md:text-white max-md:pl-4 max-md:text-left max-md:py-0"
                 >
                     {["Home", "About Us", "Blog", "Contact"].map((item) => (
                         <li key={item} className="p-3">
